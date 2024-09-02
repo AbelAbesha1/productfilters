@@ -3,6 +3,7 @@
 import EmptyState from "@/components/Products/EmptyState";
 import Product from "@/components/Products/Product";
 import ProductSkeleton from "@/components/Products/ProductSkeleton";
+
 import {
   Accordion,
   AccordionContent,
@@ -387,7 +388,9 @@ export default function Home() {
             {products && products.length === 0 ? (
               <EmptyState />
             ) : products ? (
-              products.map((product) => <Product product={product.metadata!} />)
+              products.map((product) => (
+                <Product key={product.id} product={product.metadata!} />
+              ))
             ) : (
               new Array(12)
                 .fill(null)
